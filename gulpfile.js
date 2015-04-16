@@ -3,7 +3,9 @@ var SRC_CODE = ['./src/**/*.js'];
 var gulp = require('gulp'),
 	del = require('del'),
 	jshint = require('gulp-jshint'),
-	jslint = require('gulp-jslint');
+	jslint = require('gulp-jslint'),
+	mocha = require('gulp-mocha'),
+	istanbul = require('gulp-istanbul');
 
 // CLEANING UP OLD FILES
 gulp.task('clean', function(cb) {
@@ -14,42 +16,42 @@ gulp.task('clean', function(cb) {
 // JSHINT BEST PRACTICES VERIFICATION
 gulp.task('hint', function() {
 	return gulp.src(SRC_CODE)
-		.pipe(jshint())
-		.pipe(jshint.reporter('jshint-stylish'))
-		.pipe(jshint.reporter('fail'));
+	.pipe(jshint())
+	.pipe(jshint.reporter('jshint-stylish'))
+	.pipe(jshint.reporter('fail'));
 });
 
 
 // JSLINT PATTERN VERIFICATION
 gulp.task('lint', function() {
 	return gulp.src(SRC_CODE)
-		.pipe(jslint({
-			// these directives can
-			// be found in the official
-			// JSLint documentation.
-			node: false,
-			evil: true,
-			nomen: true,
-			// you can also set global
-			// declarations for all source
-			// files like so:
-			global: [],
-			predef: [],
-			// both ways will achieve the
-			// same result; predef will be
-			// given priority because it is
-			// promoted by JSLint
-			// pass in your prefered
-			// reporter like so:
-			reporter: 'default',
-			// ^ there's no need to tell gulp-jslint
-			// to use the default reporter. If there is
-			// no reporter specified, gulp-jslint will use
-			// its own.
-			// specify whether or not
-			// to show 'PASS' messages
-			// for built-in reporter
-			errorsOnly: false
+	.pipe(jslint({
+		// these directives can
+		// be found in the official
+		// JSLint documentation.
+		node: false,
+		evil: true,
+		nomen: true,
+		// you can also set global
+		// declarations for all source
+		// files like so:
+		global: [],
+		predef: [],
+		// both ways will achieve the
+		// same result; predef will be
+		// given priority because it is
+		// promoted by JSLint
+		// pass in your prefered
+		// reporter like so:
+		reporter: 'default',
+		// ^ there's no need to tell gulp-jslint
+		// to use the default reporter. If there is
+		// no reporter specified, gulp-jslint will use
+		// its own.
+		// specify whether or not
+		// to show 'PASS' messages
+		// for built-in reporter
+		errorsOnly: false
 		}))
 		// error handling:
 		// to handle on error, simply
@@ -59,9 +61,40 @@ gulp.task('lint', function() {
 		// (error instanceof Error)
 		.on('error', function(error) {
 			console.error(String(error));
+			});
 		});
-});
 
-// task chain definidtions
-gulp.task('all', ['clean', 'hint', 'lint']);
-gulp.task('default', ['all']);
+		gulp.task('test', [ 'test:unit' ]);
+
+		gulp.task('test:unit', function(cb) {
+
+			// instrumenting with istanbul
+			return gulp.src(SRC_CODE)
+
+			.pipe(istanbul({
+				includeUntested: true
+			}))
+
+			.pipe(istanbul.hookRequire())
+
+			.on('finish', function () {
+
+				// covering with mocha
+				gulp.src(['tests/unit/**/*.test.js'])
+				.pipe(mocha({
+					reporter: 'spec',
+					timeout: 200
+				}))
+
+				// writing reports - https://github.com/SBoudrias/gulp-istanbul
+				.pipe(istanbul.writeReports({
+					dir: './build/coverage',
+					reporters: [ 'text', 'text-summary', 'html','lcov', 'json' ],
+					reportOpts: { dir: './build/coverage' }
+				}));
+			});
+		});
+
+		// task chain definidtions
+		gulp.task('all', ['clean', 'hint', 'lint', 'test']);
+		gulp.task('default', ['all']);
