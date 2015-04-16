@@ -4,7 +4,8 @@
   "description": "Grupo API front end framework.",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "start": "./node_modules/gulp/bin/gulp.js all",
+    "test": "./node_modules/gulp/bin/gulp.js test"
   },
   "repository": {
     "type": "git",
@@ -14,5 +15,9 @@
   "license": "BSD",
   "bugs": {
     "url": "https://github.com/grupoapi/arubajs/issues"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.11",
+    "del": "~1.1.1"
   }
 }
