@@ -1,13 +1,15 @@
-(function() {
+/*global angular*/
+(function () {
+    "use strict";
 
-	// COnfig method
-	function ArubaConfig($provide) {
-		$provide.decorator("$log", function($delegate, shadowLogger) {
-			return shadowLogger($delegate);
-		});
-	};
+    // Config method
+    function ArubaConfig($provide) {
+        $provide.decorator("$log", function ($delegate, shadowLogger) {
+            return shadowLogger($delegate);
+        });
+    }
 
-	// registering on angular
-	angular.module("aruba.js", []);
-	angular.module("aruba.js").config(["$provide", ArubaConfig]);
-})();
+    // registering on angular
+    angular.module("aruba.js", []);
+    angular.module("aruba.js").config(["$provide", ArubaConfig]);
+}());

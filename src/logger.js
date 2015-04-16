@@ -1,27 +1,32 @@
-(function() {
+/*global angular*/
+(function () {
+    "use strict";
 
-  // logger definition
-  function ArubaLogger() {
+    // logger definition
+    function ArubaLogger() {
+        return function ($delegate) {
+            return {
+                log: function () {
+                    $delegate.log(arguments);
+                },
 
-    return function($delegate) {
+                info: function () {
+                    $delegate.info(arguments);
+                },
 
-      return {
+                error: function () {
+                    $delegate.error(arguments);
+                },
 
-        log: function() {
-          $delegate.log(arguments);
-        },
+                warn: function () {
+                    $delegate.war(arguments);
+                }
+            };
+        };
+    }
 
-        info: function() {},
-
-        error: function() {},
-
-        warn: function() {}
-      };
-    };
-  }
-
-  // registering on angular
-  angular
-    .module("aruba.js")
-    .factory("shadowLogger", ArubaLogger);
-})();
+    // registering on angular
+    angular
+        .module("aruba.js")
+        .factory("shadowLogger", ArubaLogger);
+}());
