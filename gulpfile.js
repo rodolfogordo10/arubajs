@@ -64,7 +64,7 @@ gulp.task('lint', function() {
 			});
 		});
 
-		gulp.task('test', [ 'test:unit' ]);
+		gulp.task('test', [ 'test:unit', 'hint', 'lint' ]);
 
 		gulp.task('test:unit', function(cb) {
 
@@ -96,5 +96,5 @@ gulp.task('lint', function() {
 		});
 
 		// task chain definidtions
-		gulp.task('all', ['clean', 'hint', 'lint', 'test']);
+		gulp.task('all', ['clean', 'test']);
 		gulp.task('default', ['all']);
