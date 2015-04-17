@@ -3,7 +3,8 @@
     "use strict";
 
     // Config method
-    function ArubaConfig ($provide) {
+    function ArubaConfig($provide)
+    {
         $provide.decorator("$log", function ($delegate, shadowLogger) {
             return shadowLogger($delegate);
         });
