@@ -6,6 +6,10 @@
     function ArubaLogger() {
         return function ($delegate) {
             return {
+                dispatch: function () {
+                    return true;
+                },
+
                 log: function () {
                     $delegate.log(arguments);
                 },
