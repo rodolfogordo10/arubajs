@@ -24,8 +24,8 @@ after_script:
   - cat './build/coverage/lcov.info' | ./node_modules/coveralls/bin/coveralls.js
 
 notifications:
+  email:
+    - vinicius.linck@grupoapi.net.br    
   hipchat:
     - 1429605@aruba.js
-  template:
-    - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
   notify: true

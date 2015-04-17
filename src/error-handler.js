@@ -1,4 +1,4 @@
-/*global angular*/
+/*global angular, console*/
 (function () {
     "use strict";
 
@@ -6,7 +6,9 @@
     function ArubaExceptionHandler() {
 
         return function (exception, cause) {
-            exception.message += ' (caused by "' + cause + '")';
+            // need to figure out what to do with exceptions
+            console.error(exception);
+            console.debug(cause);
         };
     }
 
