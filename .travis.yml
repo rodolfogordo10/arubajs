@@ -11,5 +11,5 @@ addons:
     repo_token: 0597e5fa0705b17a4c02053447c4f6a5cb06009492f606f9033208505c2939d6
 
 after_script:
-  - codeclimate < lcov.info
+  - codeclimate < ./build/coverage/lcov.info
   - cat './build/coverage/lcov.info' | ./node_modules/coveralls/bin/coveralls.js
