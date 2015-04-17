@@ -4,6 +4,12 @@ node_js:
   - "0.10"
   - "0.12"
 
+# whitelist
+branches:
+  only:
+    - master
+    - stable
+
 addons:
   code_climate:
     repo_token: 0597e5fa0705b17a4c02053447c4f6a5cb06009492f606f9033208505c2939d6
@@ -16,3 +22,10 @@ script: npm test
 after_script:
   - codeclimate < ./build/coverage/lcov.info
   - cat './build/coverage/lcov.info' | ./node_modules/coveralls/bin/coveralls.js
+
+notifications:
+  hipchat:
+    - 1429605@aruba.js
+  template:
+    - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
+  notify: true
