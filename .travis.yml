@@ -25,7 +25,7 @@ after_script:
 
 notifications:
   email:
-    - vinicius.linck@grupoapi.net.br    
+    - vinicius.linck@grupoapi.net.br
   hipchat:
-    - 1429605@aruba.js
+    - VaQguLvxrFuAjOHi2KRfLBYXchJz6ToYT74R2RKs@aruba.js
   notify: true
