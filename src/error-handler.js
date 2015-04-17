@@ -5,9 +5,8 @@
     // defining behaviour
     function ArubaExceptionHandler() {
 
-        return function NewHandler(exception, cause) {
+        return function (exception, cause) {
             exception.message += ' (caused by "' + cause + '")';
-            throw exception;
         };
     }
 
