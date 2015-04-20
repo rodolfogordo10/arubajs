@@ -6,7 +6,8 @@ var gulp = require('gulp'),
 	jslint = require('gulp-jslint'),
 	karma = require('karma').server,
 	concat = require('gulp-concat'),
-	uglify = require('gulp-uglify');;
+	uglify = require('gulp-uglify'),
+	sourcemaps = require('gulp-sourcemaps');
 
 // CLEANING UP OLD FILES
 gulp.task('clean', function(cb) {
@@ -84,8 +85,14 @@ gulp.task('lint', function() {
 
 		gulp.task('build:min', function () {
 			return gulp.src(SRC_CODE)
+				.pipe(sourcemaps.init())
 				.pipe(concat('aruba.min.js'))
-				.pipe(uglify())
+				.pipe(uglify({
+					compress: {
+						negate_iife: false
+						}
+					}))
+				.pipe(sourcemaps.write('./'))
 				.pipe(gulp.dest('./dist/'));
 		});
 
