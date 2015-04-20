@@ -19,7 +19,7 @@ before_script:
 script: npm test
 
 after_script:
-  - codeclimate < ./build/coverage/lcov.info
+  - codeclimate < ./build/coverage/report-lcovonly.info
   - cat './build/coverage/report-lcovonly.info' | ./node_modules/coveralls/bin/coveralls.js
 
 notifications:
