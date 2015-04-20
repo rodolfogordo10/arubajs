@@ -28,11 +28,14 @@ module.exports = function(config) {
       // specify a common output directory
       dir: './build/coverage',
       reporters: [
-        { type: 'text' },
+        // reporters not supporting the `file` property
+        { type: 'html', subdir: 'report-html' },
+        { type: 'lcov', subdir: 'report-lcov' },
+        // reporters supporting the `file` property, use `subdir` to directly
+        // output them in the `dir` directory
+        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.info' },
+        { type: 'text'},
         { type: 'text-summary'},
-        { type: 'html'},
-        { type: 'lcov'},
-        { type: 'json'}
       ]
     },
 
