@@ -4,7 +4,9 @@ var gulp = require('gulp'),
 	del = require('del'),
 	jshint = require('gulp-jshint'),
 	jslint = require('gulp-jslint'),
-	karma = require('karma').server;
+	karma = require('karma').server,
+	concat = require('gulp-concat'),
+	uglify = require('gulp-uglify');;
 
 // CLEANING UP OLD FILES
 gulp.task('clean', function(cb) {
@@ -72,6 +74,21 @@ gulp.task('lint', function() {
 	    }, cb);
 		});
 
+		gulp.task('build', ['build:bundle', 'build:min']);
+
+		gulp.task('build:bundle',  function () {
+			return gulp.src(SRC_CODE)
+				.pipe(concat('aruba.js'))
+				.pipe(gulp.dest('./dist/'));
+		});
+
+		gulp.task('build:min', function () {
+			return gulp.src(SRC_CODE)
+				.pipe(concat('aruba.min.js'))
+				.pipe(uglify())
+				.pipe(gulp.dest('./dist/'));
+		});
+
 		// task chain definidtions
-		gulp.task('all', ['clean', 'test']);
+		gulp.task('all', ['clean', 'test', 'build']);
 		gulp.task('default', ['all']);
