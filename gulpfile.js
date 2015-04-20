@@ -4,8 +4,7 @@ var gulp = require('gulp'),
 	del = require('del'),
 	jshint = require('gulp-jshint'),
 	jslint = require('gulp-jslint'),
-	mocha = require('gulp-mocha'),
-	istanbul = require('gulp-istanbul');
+	karma = require('karma').server;
 
 // CLEANING UP OLD FILES
 gulp.task('clean', function(cb) {
@@ -67,32 +66,10 @@ gulp.task('lint', function() {
 		gulp.task('test', [ 'test:unit', 'hint', 'lint' ]);
 
 		gulp.task('test:unit', function(cb) {
-
-			// instrumenting with istanbul
-			return gulp.src(SRC_CODE)
-
-			.pipe(istanbul({
-				includeUntested: true
-			}))
-
-			.pipe(istanbul.hookRequire())
-
-			.on('finish', function () {
-
-				// covering with mocha
-				gulp.src(['tests/unit/**/*.test.js'])
-				.pipe(mocha({
-					reporter: 'spec',
-					timeout: 200
-				}))
-
-				// writing reports - https://github.com/SBoudrias/gulp-istanbul
-				.pipe(istanbul.writeReports({
-					dir: './build/coverage',
-					reporters: [ 'text', 'text-summary', 'html','lcov', 'json' ],
-					reportOpts: { dir: './build/coverage' }
-				}));
-			});
+			karma.start({
+	        configFile: __dirname + '/test/conf/karma.conf.js',
+	        singleRun: true
+	    }, cb);
 		});
 
 		// task chain definidtions
