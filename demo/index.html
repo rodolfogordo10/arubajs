@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<body>
-			<script src="angular/angular.min.js"></script>
-			<script src="aruba.min.js"></script>
+			<script src="angular/angular.js"></script>
+			<script src="aruba.js"></script>
+			<script src="app.js"></script>
 			<script>
-				document.addEventListener('DOMContentLoaded', function () {
-					window.gapi.loader.load(function () {
-						console.log(arguments);
+				document.addEventListener('DOMContentLoaded', function () {;
+					window.gapi.aruba.boot('demoApp', function () {
+						console.info('# LOADED: ', window.gapi.aruba.isBootstrapped);
 					});
 				});
 			</script>

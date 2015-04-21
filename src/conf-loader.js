@@ -14,7 +14,8 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    cb(null, xhr.responseText);
+                    var parsed = JSON.parse(xhr.responseText);
+                    cb(null, parsed);
                 } else {
                     cb("Error loading file - status " + xhr.status);
                 }
@@ -33,7 +34,7 @@
     };
 
     // creating instance
-    namespace.loader = new ConfLoader();
+    namespace.config = new ConfLoader();
 
     // saving namespace
     window.gapi = namespace;

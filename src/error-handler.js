@@ -9,6 +9,7 @@
             // need to figure out what to do with exceptions
             console.error(exception);
             console.debug(cause);
+            throw exception;
         };
     }
 
