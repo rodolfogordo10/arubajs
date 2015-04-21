@@ -32,7 +32,7 @@ To make development easier, several npm tasks/scripts are pre-configured:
 
 ## Documentation
 
-Comming soon...
+Soon...
 
 ## License
 
