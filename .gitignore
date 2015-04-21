@@ -29,3 +29,4 @@ node_modules
 # Project pecifics
 build
 dist
+release

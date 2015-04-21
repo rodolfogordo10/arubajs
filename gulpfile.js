@@ -8,11 +8,16 @@ var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
 	sourcemaps = require('gulp-sourcemaps'),
+	gzip = require('gulp-gzip'),
+	tar = require('gulp-tar'),
 	serve = require('gulp-serve');
+
+var pkg = require('./bower.json'),
+	RELEASE_FILE_NAME = 'aruba.js-' + pkg.version + '.tar';
 
 // CLEANING UP OLD FILES
 gulp.task('clean', function(cb) {
-	del(['build', 'dist'], cb);
+	del(['build', 'dist', 'release'], cb);
 });
 
 
@@ -76,7 +81,7 @@ gulp.task('lint', function() {
 	    }, cb);
 		});
 
-		gulp.task('build', ['build:bundle', 'build:min']);
+		gulp.task('build', ['build:bundle', 'build:min', 'build:gzip']);
 
 		gulp.task('build:bundle',  function () {
 			return gulp.src(SRC_CODE)
@@ -97,7 +102,23 @@ gulp.task('lint', function() {
 				.pipe(gulp.dest('./dist/'));
 		});
 
+		gulp.task('build:gzip', function () {
+			return gulp.src('./dist/aruba.min.js')
+				.pipe(gzip())
+				.pipe(gulp.dest('./dist/'))
+		});
+
+		gulp.task('tarball', function () {
+			return gulp.src('./dist/*')
+				.pipe(tar(RELEASE_FILE_NAME))
+				.pipe(gzip())
+				.pipe(gulp.dest('./release'));
+		});
+
 		// task chain definidtions
 		gulp.task('demo', ['build'], serve(['demo','dist','vendor']));
 		gulp.task('all', ['clean', 'test', 'build']);
 		gulp.task('default', ['all']);
+
+		// release process
+		gulp.task('release', ['tarball']);

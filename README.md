@@ -27,7 +27,8 @@ To make development easier, several npm tasks/scripts are pre-configured:
 * __npm test__: run all automated tests and check the code against jshint and jslint best practices.
 * __npm run-script clean__: project folder cleaning.
 * __npm run-script demo__: run demo app over a node web server using _gulp-serve_ module. The server publish the app on port 3000.
-* __npm run-script release__: prepare package to be released.
+* __npm run-script build__: build entire project generating main assets into "dist" folder.
+* __npm run-script release__: prepare package to be released. Works only after running "build" script.
 
 ## Documentation
 
