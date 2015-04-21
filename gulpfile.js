@@ -102,10 +102,10 @@ gulp.task('lint', function() {
 				.pipe(gulp.dest('./dist/'));
 		});
 
-		gulp.task('build:gzip', function () {
+		gulp.task('build:gzip', ['build:min'], function () {
 			return gulp.src('./dist/aruba.min.js')
 				.pipe(gzip())
-				.pipe(gulp.dest('./dist/'))
+				.pipe(gulp.dest('./dist'))
 		});
 
 		gulp.task('tarball', function () {

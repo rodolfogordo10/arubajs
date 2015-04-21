@@ -1,9 +1,9 @@
 {
   "name": "aruba.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/grupoapi/arubajs",
   "description": "Grupo API Front End Framework",
-  "main": "dist/aruba.js",
+  "main": "./aruba.js",
   "keywords": [
     "Aruba",
     "Angular",
@@ -14,23 +14,7 @@
     "Vinicius Linck"
   ],
   "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "vendor",
-    "test",
-    "tests",
-    "build",
-    "src",
-    "test",
-    "*.yml",
-    "*.*rc",
-    ".gitignore",
-    "gulpfile.js",
-    "package.json",
-    "*.md"
-  ],
+  "ignore": [],
   "dependencies": {
     "angular": "~1.3.15"
   }
