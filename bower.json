@@ -19,7 +19,16 @@
     "bower_components",
     "vendor",
     "test",
-    "tests"
+    "tests",
+    "build",
+    "src",
+    "test",
+    "*.yml",
+    "*.*rc",
+    ".gitignore",
+    "gulpfile.js",
+    "package.json",
+    "*.md"
   ],
   "dependencies": {
     "angular": "~1.3.15"
