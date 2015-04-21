@@ -1,4 +1,4 @@
-var SRC_CODE = ['./src/**/*.js'];
+var SRC_CODE = ['./src/main.js','./src/**/*.js'];
 
 var gulp = require('gulp'),
 	del = require('del'),
@@ -7,7 +7,8 @@ var gulp = require('gulp'),
 	karma = require('karma').server,
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
-	sourcemaps = require('gulp-sourcemaps');
+	sourcemaps = require('gulp-sourcemaps'),
+	serve = require('gulp-serve');
 
 // CLEANING UP OLD FILES
 gulp.task('clean', function(cb) {
@@ -97,5 +98,6 @@ gulp.task('lint', function() {
 		});
 
 		// task chain definidtions
+		gulp.task('demo', ['build'], serve(['demo','dist','vendor']));
 		gulp.task('all', ['clean', 'test', 'build']);
 		gulp.task('default', ['all']);
