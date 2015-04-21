@@ -5,6 +5,7 @@
   "description": "Grupo API Front End Framework",
   "main": "dist/aruba.js",
   "keywords": [
+    "Aruba",
     "Angular",
     "GrupoAPI",
     "Javascript"
