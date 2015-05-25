@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
-	<body>
-			<script src="angular/angular.js"></script>
-			<script src="aruba.js"></script>
-			<script src="app.js"></script>
-			<script>
-				document.addEventListener('DOMContentLoaded', function () {;
-					window.gapi.aruba.boot('demoApp', function () {
-						console.info('# LOADED: ', window.gapi.aruba.isBootstrapped);
-					});
+	<head>
+		<script src="angular/angular.js"></script>
+		<script src="angular-route/angular-route.js"></script>
+		<script src="aruba.js"></script>
+		<script src="app.js"></script>
+	</head>
+	<body ng-controller="MainController">
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {;
+				window.gapi.aruba.boot('demoApp', function () {
+					console.info('# LOADED: ', window.gapi.aruba.isBootstrapped);
 				});
-			</script>
+			});
+		</script>
 	</body>
 </html>
