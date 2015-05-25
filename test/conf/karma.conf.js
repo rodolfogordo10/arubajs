@@ -9,7 +9,7 @@ module.exports = function(config) {
     files: [
       'vendor/angular/angular.js',
       'src/main.js',
-      'src/*.js',
+      'src/**/*.js',
       'test/unit/*.js'
     ],
 

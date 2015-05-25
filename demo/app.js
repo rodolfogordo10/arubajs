@@ -1,5 +1,5 @@
 /*global angular, console, setTimeout*/
-angular.module('demoApp', ['aruba.js']);
+angular.module('demoApp', ['aruba.js', 'ngRoute']);
 
 angular.module('demoApp').run(['$log', 'boot.options', function ($log, options) {
     'use strict';
