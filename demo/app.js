@@ -7,11 +7,16 @@ angular.module('demoApp').run(['$log', 'boot.options', function ($log, options) 
     console.info("Let's go to Aruba? ", $log.dispatch());
 }]);
 
-angular.module('demoApp').controller('MainController', ['$scope', function ($scope) {
+angular.module('demoApp').controller('MainController', ['$scope', 'coreApiService', function ($scope, coreApiService) {
 
+    // testing coreApiService
+    console.info('Core URL: ', coreApiService.getUrl());
+
+    // testing error handling
     $scope.$on('ARUBAJS_INTERNAL_ERROR', function () {
         console.warn('Error catched successfully!');
     });
+
 
     throw "Teste error handling!";
 }]);
