@@ -9,14 +9,19 @@
 
             // preparing message to be dispatched
             var dispatcher = null,
+                logger = null,
                 data = {
                     "error": exception,
                     "details": cause
                 };
 
-            // need to figure out what to do with exceptions
-            console.error('[ARUBAJS_INTERNAL_ERROR]', exception);
-            console.debug('[ARUBAJS_DEBUG_INFO]', cause);
+            // logging
+            logger = $injector.get('$log');
+            logger.error(exception);
+
+            if (cause) {
+                logger.debug(cause);
+            }
 
             // dispatching message
             dispatcher = $injector.get('$rootScope');

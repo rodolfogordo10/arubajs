@@ -1,4 +1,4 @@
-/*global angular*/
+/*global angular, console*/
 (function () {
     "use strict";
 
@@ -6,24 +6,44 @@
     function ArubaLogger() {
         return function ($delegate) {
             return {
-                dispatch: function () {
-                    return true;
+                dispatch: function (method, params) {
+                    // defining method
+                    var proc = $delegate[method] || $delegate.log,
+                        stamp = new Date().toString(),
+                        prefix = '[' + stamp + '][' + method + ']::',
+                        msg = [],
+                        arg;
+
+                    if (method) {
+                        // preparing msg
+                        msg.push(prefix);
+
+                        // joining params
+                        for (arg in params) {
+                            if (params.hasOwnProperty(arg)) {
+                                msg.push(params[arg]);
+                            }
+                        }
+
+                        // applying log info
+                        proc.apply(null, msg);
+                    }
                 },
 
                 log: function () {
-                    $delegate.log(arguments);
+                    this.dispatch('log', arguments);
                 },
 
                 info: function () {
-                    $delegate.info(arguments);
+                    this.dispatch('info', arguments);
                 },
 
                 error: function () {
-                    $delegate.error(arguments);
+                    this.dispatch('error', arguments);
                 },
 
                 warn: function () {
-                    $delegate.war(arguments);
+                    this.dispatch('warn', arguments);
                 }
             };
         };
