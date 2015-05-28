@@ -3,6 +3,7 @@
   "def_api_version": "v1",
   "def_api_app": "integra",
   "soa_url": "https://soa.grupoapi.net.br/externo",
+  "soa_access_token": "92ecdad96c33f8d070720a249de278c4e033950i",
   "onRun": {
       "cacheViews": true
   }
