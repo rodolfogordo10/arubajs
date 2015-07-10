@@ -1,4 +1,8 @@
-# arubajs [![Build Status](https://travis-ci.org/grupoapi/arubajs.svg?branch=master)](https://travis-ci.org/grupoapi/arubajs) [![Test Coverage](https://codeclimate.com/github/grupoapi/arubajs/badges/coverage.svg)](https://codeclimate.com/github/grupoapi/arubajs/coverage) [![Dependency Status](https://david-dm.org/grupoapi/arubajs.svg)](https://david-dm.org/) [![Code Climate](https://codeclimate.com/github/grupoapi/arubajs/badges/gpa.svg)](https://codeclimate.com/github/grupoapi/arubajs)
+![aruba](http://grupoapi.net.br/images/logo_aruba.png)
+
+[![Build Status](https://travis-ci.org/grupoapi/arubajs.svg?branch=master)](https://travis-ci.org/grupoapi/arubajs) [![Test Coverage](https://codeclimate.com/github/grupoapi/arubajs/badges/coverage.svg)](https://codeclimate.com/github/grupoapi/arubajs/coverage) [![Dependency Status](https://david-dm.org/grupoapi/arubajs.svg)](https://david-dm.org/) [![Code Climate](https://codeclimate.com/github/grupoapi/arubajs/badges/gpa.svg)](https://codeclimate.com/github/grupoapi/arubajs)
+
+
 Aruba JS is a Grupo API Angular Module containing common/basic features
 
 ## About ArubaJS
