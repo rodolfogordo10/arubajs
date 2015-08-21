@@ -20,7 +20,7 @@
 
         // Returns Application name capitalizing the first letter with UpperCase
         this.getAppplicationName = function () {
-            return app_name.charAt(0).toUppercase() + app_name.slice(1);
+            return app_name.charAt(0).toUpperCase() + app_name.slice(1);
         };
 
     }]);
