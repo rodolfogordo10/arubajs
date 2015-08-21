@@ -8,9 +8,13 @@
             accounts_url  = options.accounts_url,
             application_name = options.def_api_app;
 
-        // Returns Core API Service URL
-        this.getCoreUrl = function () {
+        // Returns Core API Service URL based on Current Application
+        this.getAppCoreUrl = function () {
             return base_core_url;
+        };
+
+        this.getAccountsCoreUrl = function () {
+            return options.core_url + options.def_api_version + '/accounts/';
         };
 
         // Returns Accounts URL
