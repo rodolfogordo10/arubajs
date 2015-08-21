@@ -1,6 +1,6 @@
 {
   "name": "arubajs",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Grupo API front end framework.",
   "main": "index.js",
   "scripts": {
