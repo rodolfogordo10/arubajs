@@ -1,6 +1,6 @@
 {
   "name": "aruba.js",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "https://github.com/grupoapi/arubajs",
   "description": "Grupo API Front End Framework",
   "main": "./aruba.js",
