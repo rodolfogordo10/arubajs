@@ -8,16 +8,20 @@
             accounts_url  = options.accounts_url,
             application_name = options.def_api_app;
 
+        // Returns Core API Service URL
         this.getCoreUrl = function () {
             return base_core_url;
         };
 
+        // Returns Accounts URL
         this.getAccountsUrl = function () {
             return accounts_url;
         };
 
+        // Returns Application name capitalizing the first letter with UpperCase
         this.getApplicationName = function () {
             return application_name.charAt(0).toUpperCase() + application_name.slice(1);
+
         };
 
     }]);
