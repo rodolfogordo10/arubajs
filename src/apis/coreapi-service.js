@@ -17,6 +17,10 @@
             return options.core_url + options.def_api_version + '/accounts/';
         };
 
+        this.getDriveCoreUrl = function () {
+            return options.core_url + options.def_api_version + '/drive/';
+        };
+
         // Returns Accounts URL
         this.getAccountsUrl = function () {
             return accounts_url;
